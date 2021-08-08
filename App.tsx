@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
-import Home from './screens/Home';
+import Navigator from './routes/HomeStack';
 
 // Use AppLoading component to trigger this function.
 // So, it can set the fontsLoaded state after loading the fonts.
@@ -22,7 +22,7 @@ export default function App() {
   if (fontsLoaded)
   {
     return (
-      <Home />
+      <Navigator />
     );
   }
   else

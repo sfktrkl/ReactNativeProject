@@ -77,3 +77,10 @@ https://www.youtube.com/watch?v=cFVHTazhb7I&list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzV
   > npm install @react-navigation/native
 * Installing dependencies into an Expo managed project
   > expo install react-native-screens react-native-safe-area-context
+* Additional dependencies which may be required
+  > npm install react-native-gesture-handler
+
+When different types of navigation are used those packages should also be installed.
+
+* Stack Navigator
+  > npm install react-navigation-stack
