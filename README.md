@@ -68,3 +68,12 @@ https://www.youtube.com/watch?v=cFVHTazhb7I&list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzV
   >   );
   > }
   > ```
+
+## Setup [React Navigation](https://reactnavigation.org/)
+
+* Install React Navigation
+  > npm install react-navigation
+* Install the required packages in your React Native project
+  > npm install @react-navigation/native
+* Installing dependencies into an Expo managed project
+  > expo install react-native-screens react-native-safe-area-context
