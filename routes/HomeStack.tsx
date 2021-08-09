@@ -10,16 +10,39 @@ const screens = {
   Home: {
     // Which component should be shown.
     screen: Home,
+    // When using StackNavigator, it automatically creates an header which contains
+    // name of the screen and a back button (if any screen exists in stack) etc.
+    // To be able to edit it NavigationOptions can be created for each screen.
+    navigationOptions: {
+      title: 'Game Zone',
+    },
   },
   Reviews: {
-    screen: Reviews
+    screen: Reviews,
+    navigationOptions: {
+      title: 'Review Details',
+    },
   },
 };
 
 // Create the stack navigator using createStackNavigator function
 // and pass objects which will used to configure which screens
 // will be registered to the navigator.
-const HomeStack = createStackNavigator(screens);
+const HomeStack = createStackNavigator(screens, {
+  // Each screen can have its own options, but it is not worth settings
+  // same options to each screen. Hence, as a second parameter a default
+  // navigation option can be passed (it can be overriden in screens).
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: '#bbb',
+      height: 80,
+    },
+    headerTintColor: '#333',
+    headerTitleStyle: {
+      fontFamily: 'nunito-bold',
+    },
+  }
+});
 
 // Returs the component which will be rendered from the navigation stack.
 export default createAppContainer(HomeStack);
