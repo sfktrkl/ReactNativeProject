@@ -17,7 +17,12 @@ export default function Reviews({ navigation }: NavigationStackScreenProps) {
 
   return (
     <View style={GlobalStyles.container}>
-      <Text>Reviews screen</Text>
+      <Text style={GlobalStyles.titleText}>Review screen</Text>
+      { /* navigation.getParam method of navigation will return a specific parameter which
+            is passed through an object. */ }
+      <Text>{navigation.getParam('title')}</Text>
+      <Text>Rating: {navigation.getParam('rating')}</Text>
+      <Text>{navigation.getParam('body')}</Text>
       <Button title="Go to home with goBack" onPress={pressHandler} />
     </View>
   );

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, View, Button } from "react-native";
+import React, { useState } from 'react';
+import { Text, View, Button, FlatList, TouchableOpacity } from "react-native";
 import { NavigationStackScreenProps } from "react-navigation-stack";
 
 import { GlobalStyles } from '../styles/Global';
@@ -18,9 +18,25 @@ export default function Home({ navigation }: NavigationStackScreenProps) {
     //navigation.push('Reviews');
   };
 
+  const [reviews, setReviews] = useState([
+    { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem ipsum', key: '1' },
+    { title: 'Gotta Catch Them All (again)', rating: 4, body: 'lorem ipsum', key: '2' },
+    { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
+  ]);
+
   return (
     <View style={GlobalStyles.container}>
       <Text style={GlobalStyles.titleText}>Home screen</Text>
+      { /* To pass the data through navigator, navigate to the screen and as a second
+            argument pass the object (data), its properties can be accessed with getParam. */ }
+      <FlatList
+        data={reviews}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => navigation.navigate("Reviews", item)}>
+            <Text style={GlobalStyles.titleText}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+      />
       <Button title="Go to review with navigate" onPress={pressHandler} />
     </View>
   );
