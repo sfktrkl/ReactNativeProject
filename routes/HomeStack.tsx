@@ -1,5 +1,5 @@
 import { createStackNavigator } from "react-navigation-stack";
-import { createAppContainer } from "react-navigation";
+//import { createAppContainer } from "react-navigation";
 
 import Home from "../screens/Home";
 import Reviews from "../screens/Reviews";
@@ -45,4 +45,7 @@ const HomeStack = createStackNavigator(screens, {
 });
 
 // Returs the component which will be rendered from the navigation stack.
-export default createAppContainer(HomeStack);
+// App container is not needed anymore, drawer navigator will be surround by 
+// the app container so that can be rendered on the App.
+// export default createAppContainer(HomeStack);
+export default HomeStack;

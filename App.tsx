@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
-import Navigator from './routes/HomeStack';
+import Navigator from './routes/Drawer';
 
 // Use AppLoading component to trigger this function.
 // So, it can set the fontsLoaded state after loading the fonts.

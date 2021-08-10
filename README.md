@@ -79,8 +79,12 @@ https://www.youtube.com/watch?v=cFVHTazhb7I&list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzV
   > expo install react-native-screens react-native-safe-area-context
 * Additional dependencies which may be required
   > npm install react-native-gesture-handler
+  > npm install react-native-reanimated@1.13.1
 
 When different types of navigation are used those packages should also be installed.
 
 * Stack Navigator
   > npm install react-navigation-stack
+
+* Drawer Navigator
+  > npm install react-navigation-drawer
