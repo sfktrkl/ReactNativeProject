@@ -1,8 +1,11 @@
+import React from "react"
+
 import { createStackNavigator } from "react-navigation-stack";
 //import { createAppContainer } from "react-navigation";
 
 import Home from "../screens/Home";
 import Reviews from "../screens/Reviews";
+import Header from "../shared/Header";
 
 // Each key value pair is to configure a particular screen.
 const screens = {
@@ -13,8 +16,14 @@ const screens = {
     // When using StackNavigator, it automatically creates an header which contains
     // name of the screen and a back button (if any screen exists in stack) etc.
     // To be able to edit it NavigationOptions can be created for each screen.
-    navigationOptions: {
-      title: 'Game Zone',
+    // Make a navigationOptions a function, so that it can take the navigation object.
+    // When it has an access to the navigation object, it can be passed as a prop.
+    navigationOptions: ({ navigation }: any) => {
+      return {
+        // Instead of placing a title for the screen, it can be replaced by a component
+        // by using headerTitle and a function which returns the component.
+        headerTitle: () => <Header navigation={navigation} title='Game Zone'/>,
+      };
     },
   },
   Reviews: {
