@@ -3,6 +3,7 @@ import { Text, View, Button, FlatList, TouchableOpacity } from "react-native";
 import { NavigationStackScreenProps } from "react-navigation-stack";
 
 import { GlobalStyles } from '../styles/Global';
+import Card from '../shared/Card';
 
 // When navigation stack is configured, every screen configured
 // gets a navigation property on the props assigned to it.
@@ -33,7 +34,10 @@ export default function Home({ navigation }: NavigationStackScreenProps) {
         data={reviews}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => navigation.navigate("Reviews", item)}>
-            <Text style={GlobalStyles.titleText}>{item.title}</Text>
+            { /* Wrap the text component with card, so that it can style the children. */ }
+            <Card>
+              <Text style={GlobalStyles.titleText}>{item.title}</Text>
+            </Card>
           </TouchableOpacity>
         )}
       />

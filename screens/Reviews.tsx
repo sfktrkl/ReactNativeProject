@@ -3,6 +3,7 @@ import { Text, View, Button } from 'react-native';
 import { NavigationStackScreenProps } from "react-navigation-stack";
 
 import { GlobalStyles } from '../styles/Global';
+import Card from '../shared/Card';
 
 export default function Reviews({ navigation }: NavigationStackScreenProps) {
   const pressHandler = () => {
@@ -20,9 +21,11 @@ export default function Reviews({ navigation }: NavigationStackScreenProps) {
       <Text style={GlobalStyles.titleText}>Review screen</Text>
       { /* navigation.getParam method of navigation will return a specific parameter which
             is passed through an object. */ }
-      <Text>{navigation.getParam('title')}</Text>
-      <Text>Rating: {navigation.getParam('rating')}</Text>
-      <Text>{navigation.getParam('body')}</Text>
+      <Card>
+        <Text>{navigation.getParam('title')}</Text>
+        <Text>Rating: {navigation.getParam('rating')}</Text>
+        <Text>{navigation.getParam('body')}</Text>
+      </Card>
       <Button title="Go to home with goBack" onPress={pressHandler} />
     </View>
   );
