@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text, View, Button, FlatList, TouchableOpacity } from "react-native";
+import { Text, View, Button, FlatList, TouchableOpacity, Modal } from "react-native";
 import { NavigationStackScreenProps } from "react-navigation-stack";
 
+import { MaterialIcons } from '@expo/vector-icons';
 import { GlobalStyles } from '../styles/Global';
 import Card from '../shared/Card';
 
@@ -25,9 +26,34 @@ export default function Home({ navigation }: NavigationStackScreenProps) {
     { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
   ]);
 
+  // Initially set Modal visibility to false.
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <View style={GlobalStyles.container}>
       <Text style={GlobalStyles.titleText}>Home screen</Text>
+
+      { /* Modal is works like a popup. Inside it, a form can be placed which
+            user can enter an input. Toggle visible prop to show/hide the modal.*/ }
+      <Modal visible={modalOpen} animationType='slide'>
+        <View style={GlobalStyles.modalContent}>
+            <MaterialIcons 
+              name='close'
+              size={24}
+              style={{ ...GlobalStyles.modalToggle, ...GlobalStyles.modalClose }}
+              onPress={() => setModalOpen(false)}
+            />
+        </View>
+      </Modal>
+
+      { /* Create a button to change Modal visibility state. */ }
+      <MaterialIcons 
+        name='add'
+        size={24}
+        style={GlobalStyles.modalToggle}
+        onPress={() => setModalOpen(true)}
+      />
+
       { /* To pass the data through navigator, navigate to the screen and as a second
             argument pass the object (data), its properties can be accessed with getParam. */ }
       <FlatList

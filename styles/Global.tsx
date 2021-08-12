@@ -26,6 +26,21 @@ export const GlobalStyles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#eee',
   },
+  modalToggle: {
+    marginTop: 20,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#bbb',
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  modalClose: {
+    marginBottom: 0,
+  },
+  modalContent: {
+    flex: 1,
+  },
 });
 
 export type Images = {
