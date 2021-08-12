@@ -41,6 +41,13 @@ export const GlobalStyles = StyleSheet.create({
   modalContent: {
     flex: 1,
   },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 6,
+  },
 });
 
 export type Images = {

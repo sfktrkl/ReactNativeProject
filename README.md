@@ -88,3 +88,7 @@ When different types of navigation are used those packages should also be instal
 
 * Drawer Navigator
   > npm install react-navigation-drawer
+
+## Setup Formik
+Formik is a library to create a form which allows us to easily create a form which keeps track of our values inside those form fields instead of manually using states.
+  > npm install formik

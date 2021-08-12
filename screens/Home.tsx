@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
-import { Text, View, Button, FlatList, TouchableOpacity, Modal } from "react-native";
+import { Text, View, Button, FlatList, TouchableOpacity, Modal, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { NavigationStackScreenProps } from "react-navigation-stack";
 
 import { MaterialIcons } from '@expo/vector-icons';
 import { GlobalStyles } from '../styles/Global';
+import Form, { Review } from './Form'
 import Card from '../shared/Card';
+
+export interface ReviewItem {
+  title: string,
+  body: string,
+  rating: number,
+  key: string,
+};
 
 // When navigation stack is configured, every screen configured
 // gets a navigation property on the props assigned to it.
@@ -29,6 +37,27 @@ export default function Home({ navigation }: NavigationStackScreenProps) {
   // Initially set Modal visibility to false.
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [key, setKey] = useState(reviews.length + 1);
+  const addReview = (review: Review): void => {
+    // Iterate the key, so it can be unique.
+    let newReview: ReviewItem = 
+    {
+      title: review.title,
+      body: review.body,
+      rating: parseInt(review.rating),
+      key: key.toString()
+    };
+    setKey(key + 1);
+
+    // Set the reviews by adding the new one.
+    setReviews((reviews) => {
+      return [newReview, ...reviews];
+    });
+
+    // Add the new review and close the form.
+    setModalOpen(false);
+  };
+
   return (
     <View style={GlobalStyles.container}>
       <Text style={GlobalStyles.titleText}>Home screen</Text>
@@ -36,14 +65,17 @@ export default function Home({ navigation }: NavigationStackScreenProps) {
       { /* Modal is works like a popup. Inside it, a form can be placed which
             user can enter an input. Toggle visible prop to show/hide the modal.*/ }
       <Modal visible={modalOpen} animationType='slide'>
-        <View style={GlobalStyles.modalContent}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={GlobalStyles.modalContent}>
             <MaterialIcons 
               name='close'
               size={24}
               style={{ ...GlobalStyles.modalToggle, ...GlobalStyles.modalClose }}
               onPress={() => setModalOpen(false)}
             />
-        </View>
+            <Form addReview={addReview}/>
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       { /* Create a button to change Modal visibility state. */ }
