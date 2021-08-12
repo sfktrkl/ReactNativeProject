@@ -6,6 +6,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import Home from "../screens/Home";
 import Reviews from "../screens/Reviews";
 import Header from "../shared/Header";
+import { defaultNavigationOptions } from "../styles/Global";
 
 // Each key value pair is to configure a particular screen.
 const screens = {
@@ -41,16 +42,7 @@ const HomeStack = createStackNavigator(screens, {
   // Each screen can have its own options, but it is not worth settings
   // same options to each screen. Hence, as a second parameter a default
   // navigation option can be passed (it can be overriden in screens).
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: '#bbb',
-      height: 80,
-    },
-    headerTintColor: '#333',
-    headerTitleStyle: {
-      fontFamily: 'nunito-bold',
-    },
-  }
+  defaultNavigationOptions: defaultNavigationOptions,
 });
 
 // Returs the component which will be rendered from the navigation stack.

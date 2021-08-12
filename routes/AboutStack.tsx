@@ -4,6 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 
 import About from "../screens/About";
 import Header from "../shared/Header";
+import { defaultNavigationOptions } from "../styles/Global";
 
 const screens = {
   Home: {
@@ -17,16 +18,7 @@ const screens = {
 };
 
 const AboutStack = createStackNavigator(screens, {
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: '#bbb',
-      height: 80,
-    },
-    headerTintColor: '#333',
-    headerTitleStyle: {
-      fontFamily: 'nunito-bold',
-    },
-  }
+  defaultNavigationOptions: defaultNavigationOptions,
 });
 
 // Nest this inside a drawer navigator, like HomeStack.

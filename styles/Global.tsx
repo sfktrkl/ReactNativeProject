@@ -1,4 +1,5 @@
 import { ImageSourcePropType, StyleSheet } from 'react-native';
+import { StackNavigationOptions } from 'react-navigation-stack/lib/typescript/src/vendor/types';
 
 // Create some global styles so that they can be used in
 // any component or screen which will be created if needed.
@@ -42,3 +43,23 @@ export const images: Images = {
     '5': require('../assets/rating-5.png'),
   },
 };
+
+export const defaultNavigationOptions: StackNavigationOptions = {
+  headerTitleContainerStyle: {
+    left: 0,
+    right: 0,
+    width: '100%',
+    height: '100%',
+  },
+  headerStyle: {
+    backgroundColor: '#bbb',
+    height: 80,
+  },
+  headerTintColor: '#333',
+  headerTitleStyle: {
+    flex: 1,
+    fontFamily: 'nunito-bold',
+    textAlignVertical: 'center',
+    alignSelf: 'center',
+  },
+}
