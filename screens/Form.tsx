@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, TextInput } from 'react-native';
+import { View, Button, TextInput, Text } from 'react-native';
 
 import { GlobalStyles } from '../styles/Global';
 import { Formik } from 'formik';
@@ -57,12 +57,20 @@ export default function Form({ addReview }: FormProps) {
             { /* onChangeText function is updating the title and property on the value
                   form a two way data binding. Hence, when the props are updated (onSubmit)
                   it will also update */}
+            { /*  To get a real time validation, use onBlur. So, when a field is loses its focus
+                    it will trigger the onBlur function and run the validation in real time. */ }
             <TextInput 
               style={GlobalStyles.input}
               placeholder={'Review title'}
               onChangeText={formikProps.handleChange('title')}
               value={formikProps.values.title}
+              onBlur={formikProps.handleBlur('title')}
             />
+            { /* When formik and yup used together, when validation fails yup provides formik with some
+                  error messages and attaches those to the props.
+                 To not show each error text at the same time, use touched. So that only the fields which
+                  are changed by the user will get the error messages. */}
+            <Text style={GlobalStyles.errorText}>{ formikProps.touched.title && formikProps.errors.title }</Text>
 
             <TextInput 
               multiline
@@ -70,7 +78,9 @@ export default function Form({ addReview }: FormProps) {
               placeholder={'Review body'}
               onChangeText={formikProps.handleChange('body')}
               value={formikProps.values.body}
+              onBlur={formikProps.handleBlur('body')}
             />
+            <Text style={GlobalStyles.errorText}>{ formikProps.touched.body && formikProps.errors.body }</Text>
 
             <TextInput 
               multiline
@@ -79,7 +89,9 @@ export default function Form({ addReview }: FormProps) {
               placeholder={'Rating 1-5'}
               onChangeText={formikProps.handleChange('rating')}
               value={formikProps.values.rating.toString()}
+              onBlur={formikProps.handleBlur('rating')}
             />
+            <Text style={GlobalStyles.errorText}>{ formikProps.touched.rating && formikProps.errors.rating }</Text>
 
             <Button title='Send' color='maroon' onPress={() => formikProps.handleSubmit()} />
           </View>
