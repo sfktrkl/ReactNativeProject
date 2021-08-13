@@ -92,3 +92,7 @@ When different types of navigation are used those packages should also be instal
 ## Setup Formik
 Formik is a library to create a form which allows us to easily create a form which keeps track of our values inside those form fields instead of manually using states.
   > npm install formik
+
+## Setup Yup
+Yup is a validation library and that allows us to easily set up some validation rules for each individual form field.
+  > npm install yup

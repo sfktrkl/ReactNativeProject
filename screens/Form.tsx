@@ -3,6 +3,7 @@ import { View, Button, TextInput } from 'react-native';
 
 import { GlobalStyles } from '../styles/Global';
 import { Formik } from 'formik';
+import * as yup from 'yup';
 
 export interface Review {
   title: string,
@@ -12,6 +13,23 @@ export interface Review {
 export interface FormProps {
   addReview: (review: Review) => void,
 };
+
+// Set of rules defined inside an object created by the yup.
+const reviewSchema = yup.object({
+  title: yup.string()
+    .required()
+    .min(4),
+  body: yup.string()
+    .required()
+    .min(8),
+  rating: yup.string()
+    .required()
+    .test('is-num-1-5', 'Rating must be a number 1 to 5.', (val) => {
+      if (val !== undefined)
+        return parseInt(val) < 6 && parseInt(val) > 0;
+      return false;
+    })
+});
 
 export default function Form({ addReview }: FormProps) {
   return (
@@ -25,6 +43,7 @@ export default function Form({ addReview }: FormProps) {
           body: '',
           rating: '',
         }}
+        validationSchema={reviewSchema}
         onSubmit={(values: Review, actions) =>
         {
           actions.resetForm(); 
